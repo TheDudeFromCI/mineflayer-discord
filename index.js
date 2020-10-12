@@ -12,17 +12,27 @@ async function init(bot, token, cb=function(){}) {
     };
     bot.discord.setChannel = async function(id, cb=function(){}) {
         try {
-            bot.discord.channel = await client.channels.cache.get(id);
-            cb(true);
+            client.channels.cache.get(id).then((channel) => {
+                bot.discord.channel = channel;
+                cb(true);
+            }, (err) => cb(err))
         } catch (e) {
             cb(new Error(e));
             return false;
         };
     };
-    bot.discord.chat = function(message, channel, cb=function(){}) {
+    bot.discord.chat = function(message, channelid, cb=function(){}) {
         try {
-            var channel = await client.channels.cache.get(id);
-            channel.send(message);
+            if (channelid.toLowerCase()=="default" || channelid == undefined) {
+                if (!bot.discord.channel) {
+                    cb(new Error("No channel provided."));
+                    return false;
+                }
+            }
+            client.channels.cache.get(channelid).then((channel) => {
+                channel.send(message);
+                cb()
+            }, (err) => cb(err))
             cb(true);
         } catch (e) {
             cb(new Error(e));
