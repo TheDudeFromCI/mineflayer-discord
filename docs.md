@@ -15,23 +15,23 @@ const bot = mineflayer.createBot({
 bot.loadPlugin(mineflayer-discord)
 ```
 
-### Functions
+## Functions
 
-#### bot.discord.setChannel(channelid, \[callback])
+### bot.discord.setChannel(channelid, \[callback])
 Sets the default channel to be used by bot.discord.chat function.
 the callback will get called when it sets the channel successfully, or if there's an error.
 
-#### bot.discord.chat(message, \[channelid], \[callback])
+### bot.discord.chat(message, \[channelid], \[callback])
 This will attempt to send a message to the specified channel (or the default channel)
 
-### Events
+## Events
 
-#### bot.on('discord_message',  channel, message, author)
+### bot.on('discord_message',  channel, message, author)
 Event fired when a discord message is recieved. Channel is the channel the message was sent in, message is the contents of the message, and author is the author of the message (a user object)
 
-### Idk what to name this
+## Idk what to name this
 
-#### bot.discord.channel
+### bot.discord.channel
 The channel object to be used as the default channel in bot.discord.chat function.
 
 
