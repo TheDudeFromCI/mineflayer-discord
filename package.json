@@ -1,0 +1,25 @@
+{
+    "name": "mineflayer-discord",
+    "version": "0.9",
+    "description": "So basically an easy to use discord integration with mineflayer bots",
+    "main": "./index.js"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ARandomAssGuy/mineflayer-discord.git"
+    },
+    "keywords": [
+        "mineflayer",
+        "discord",
+        "mineflayer-discord"
+   ],
+  "author": "A68AGaming / ARandomAssGuy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ARandomAssGuy/mineflayer-discord/issues"
+  },
+  "homepage": "https://github.com/ARandomAssGuy/mineflayer-discord#readme",
+  "dependencies": {
+    "mineflayer": "^2.30.0",
+    "discord.js": "^12.2.0"
+  }
+}
