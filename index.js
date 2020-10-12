@@ -41,7 +41,7 @@ async function init(bot, token, cb=function(){}) {
                     channel.send(message);
                     cb();
                     return true;
-                }, (err) => cb(err); return false)
+                }, (err) => {cb(err); return false})
             }
         } catch (e) {
             cb(new Error(e));
