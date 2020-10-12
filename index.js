@@ -5,7 +5,7 @@ async function init(bot, token, cb=function(){}) {
     bot.discord = bot.discord || {};
     try {
         await client.login(token);
-        cb(true);
+        cb();
     } catch (e) {
         cb(new Error(e));
         return false;
@@ -14,7 +14,7 @@ async function init(bot, token, cb=function(){}) {
         try {
             client.channels.cache.get(id).then((channel) => {
                 bot.discord.channel = channel;
-                cb(true);
+                cb();
             }, (err) => cb(err))
         } catch (e) {
             cb(new Error(e));
@@ -35,11 +35,11 @@ async function init(bot, token, cb=function(){}) {
                 }
                 channel = bot.discord.channel
                 channel.send(message);
-                cb(true);
+                cb();
             } else {
                 client.channels.cache.get(channelid).then((channel) => {
                     channel.send(message);
-                    cb(true);
+                    cb();
                     return true;
                 }, (err) => cb(err); return false)
             }
