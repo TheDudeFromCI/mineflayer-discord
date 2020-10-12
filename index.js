@@ -34,6 +34,8 @@ async function init(bot, token, cb=function(){}) {
                     return false;
                 }
                 channel = bot.discord.channel
+                channel.send(message);
+                cb(true);
             } else {
                 client.channels.cache.get(channelid).then((channel) => {
                     channel.send(message);
@@ -41,8 +43,6 @@ async function init(bot, token, cb=function(){}) {
                     return true;
                 }, (err) => cb(err); return false)
             }
-            channel.send(message);
-            cb(true);
         } catch (e) {
             cb(new Error(e));
             return false;
