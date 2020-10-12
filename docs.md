@@ -7,9 +7,16 @@ Here is an example to get you started (assuming u have all packages installed an
 const mineflayer-discord = require('./index.js')("your discord token")
 const mineflayer = require('mineflayer')
 
+if (process.argv.length < 4 || process.argv.length > 6) {
+  console.log('Usage : node bot.js <host> <port> [<name>] [<password>]')
+  process.exit(1)
+}
+
 const bot = mineflayer.createBot({
-  username: "yes",
-  host: "localhost"
+  host: process.argv[2],
+  port: process.argv[3],
+  username: process.argv[4] || 'DiscordBot',
+  password: process.argv[5]
 })
 
 bot.loadPlugin(mineflayer-discord)
