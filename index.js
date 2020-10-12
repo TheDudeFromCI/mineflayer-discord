@@ -22,17 +22,20 @@ async function init(bot, token, cb=function(){}) {
         };
     };
     bot.discord.chat = function(message, channelid, cb=function(){}) {
+        let channel;
         try {
             if (channelid.toLowerCase()=="default" || channelid == undefined) {
                 if (!bot.discord.channel) {
                     cb(new Error("No channel provided."));
                     return false;
                 }
+                channel = bot.discord.channel
+            } else {
+                client.channels.cache.get(channelid).then((channelobj) => {
+                    channel = channelobj
+                }, (err) => cb(err); return false)
             }
-            client.channels.cache.get(channelid).then((channel) => {
-                channel.send(message);
-                cb()
-            }, (err) => cb(err))
+            channel.send(message);
             cb(true);
         } catch (e) {
             cb(new Error(e));
