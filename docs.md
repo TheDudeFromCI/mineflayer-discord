@@ -4,7 +4,7 @@ Docs or something because my code is too messy
 Here is an example to get you started (assuming u have all packages installed and already have index.js downloaded in the same directory as your project.):
 
 ```js
-const mineflayer-discord = require('./index.js')("your discord token")
+const mineflayerDiscord = require('./index.js')("your discord token")
 const mineflayer = require('mineflayer')
 
 if (process.argv.length < 4 || process.argv.length > 6) {
@@ -19,7 +19,7 @@ const bot = mineflayer.createBot({
   password: process.argv[5]
 })
 
-bot.loadPlugin(mineflayer-discord)
+bot.loadPlugin(mineflayerDiscord)
 ```
 
 ## Functions
