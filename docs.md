@@ -9,7 +9,7 @@ if (process.argv.length < 5 || process.argv.length > 7) {
   process.exit(1)
 }
 
-const mineflayerDiscord = require('./index.js')(process.argv[2])
+const mineflayerDiscord = require('mineflayer-discord')(process.argv[2])
 const mineflayer = require('mineflayer')
 
 const bot = mineflayer.createBot({
