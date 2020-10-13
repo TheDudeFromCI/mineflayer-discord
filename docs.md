@@ -1,25 +1,29 @@
 Docs or something because my code is too messy
 
 # Starting
-Here is an example to get you started (assuming u have all packages installed and already have index.js downloaded in the same directory as your project.):
+Here is an example to get you started (after installing mineflayer-discord through npm):
 
 ```js
-const mineflayerDiscord = require('./index.js')("your discord token")
-const mineflayer = require('mineflayer')
-
-if (process.argv.length < 4 || process.argv.length > 6) {
-  console.log('Usage : node bot.js <host> <port> [<name>] [<password>]')
+if (process.argv.length < 5 || process.argv.length > 7) {
+  console.log('Usage : node bot.js <discordToken> <host> <port> [<name>] [<password>]')
   process.exit(1)
 }
 
+const mineflayerDiscord = require('./index.js')(process.argv[2])
+const mineflayer = require('mineflayer')
+
 const bot = mineflayer.createBot({
-  host: process.argv[2],
-  port: process.argv[3],
-  username: process.argv[4] || 'DiscordBot',
-  password: process.argv[5]
+  host: process.argv[3],
+  port: process.argv[4],
+  username: process.argv[5] || 'DiscordBot',
+  password: process.argv[6]
 })
 
 bot.loadPlugin(mineflayerDiscord)
+
+bot.once('spawn', () => {
+  bot.discord.chat('I have logged in.', 'general')
+})
 ```
 
 ## Functions
